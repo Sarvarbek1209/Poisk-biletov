@@ -1,0 +1,296 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0C0C0C"
+    android:id="@+id/fragment_search"
+    tools:context=".SearchFragment">
+
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="328dp"
+        android:layout_height="96dp"
+        android:background="@drawable/shape1"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.198">
+
+
+        <View
+            android:layout_width="268dp"
+            android:layout_height="1dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center_vertical"
+            android:layout_marginStart="43dp"
+            android:layout_marginTop="47dp"
+            android:layout_marginEnd="17dp"
+            android:layout_marginBottom="48dp"
+            android:background="#5E5F61"
+            android:gravity="center" />
+
+
+        <ImageButton
+            android:layout_width="29dp"
+            android:layout_height="41dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="7dp"
+            android:layout_marginTop="26dp"
+            android:layout_marginEnd="292dp"
+            android:layout_marginBottom="29dp"
+            android:background="#2F3035"
+            android:src="@drawable/ic_2" />
+
+        <EditText
+            android:id="@+id/Edit_text2"
+            android:layout_width="104dp"
+            android:layout_height="21dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="center_vertical|bottom"
+            android:layout_marginStart="44dp"
+            android:layout_marginEnd="180dp"
+            android:layout_marginBottom="17dp"
+            android:background="@android:color/transparent"
+            android:hint="Куда - Турция"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#7E7B7B"
+            android:textSize="16sp" />
+
+        <EditText
+            android:id="@+id/tvDeparture"
+            android:layout_width="104dp"
+            android:layout_height="21dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="44dp"
+            android:layout_marginEnd="148dp"
+            android:layout_marginBottom="55dp"
+            android:background="@android:color/transparent"
+            android:hint="Откуда-Москва"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#7E7B7B"
+            android:textSize="16dp" />
+
+        <ImageButton
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="278dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginBottom="19dp"
+            android:background="#2F3035"
+            android:src="@drawable/ic_close" />
+
+        <ImageButton
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="260dp"
+            android:layout_marginTop="22dp"
+            android:layout_marginEnd="18dp"
+            android:layout_marginBottom="53dp"
+            android:background="#2F3035"
+            android:src="@drawable/ic_3" />
+
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="399dp"
+        android:layout_height="68dp"
+        app:layout_constraintBottom_toTopOf="@+id/relativeLayout1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="89dp"
+            android:layout_height="44dp"
+            android:layout_gravity="center"
+            android:background="@drawable/shape_5"
+            >
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="+  обратно"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:textStyle="italic"
+                android:gravity="center"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="89dp"
+            android:layout_height="44dp"
+            android:layout_gravity="center"
+            android:background="@drawable/shape_5">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="24 фев, сб"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:textStyle="italic"
+                android:gravity="center"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="89dp"
+            android:layout_height="44dp"
+            android:layout_gravity="center"
+            android:background="@drawable/shape_5">
+
+
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="11dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ector" />
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="эконом"
+                android:textSize="14sp"
+                android:textColor="@color/white"
+                android:textStyle="italic"
+                android:gravity="center" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="89dp"
+            android:layout_height="44dp"
+            android:layout_gravity="center"
+            android:background="@drawable/shape_5"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="11dp"
+                android:layout_gravity="center"
+                android:src="@drawable/union" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="фильтр"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:textStyle="italic" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="328dp"
+        android:layout_height="288dp"
+        android:layout_marginBottom="148dp"
+        android:background="@drawable/shape1"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="158dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="25dp"
+            android:layout_marginEnd="145dp"
+            android:layout_marginBottom="248dp"
+            android:gravity="center"
+            android:text="Прямые рейсы"
+            android:textColor="@color/white"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:layout_width="315dp"
+            android:layout_height="181dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="6dp"
+            android:layout_marginEnd="7dp"
+            android:layout_marginBottom="51dp">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_offers1"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                tools:listitem="@layout/ragment_offers1">
+
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="155dp"
+            android:layout_height="26dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="85dp"
+            android:layout_marginTop="243dp"
+            android:layout_marginEnd="88dp"
+            android:layout_marginBottom="19dp"
+            android:gravity="center"
+            android:text="Показать все"
+            android:textColor="#2261BC"
+            android:textSize="16sp" />
+
+    </RelativeLayout>
+
+    <Button
+        android:layout_width="328dp"
+        android:layout_height="42dp"
+        android:backgroundTint="#2261BC"
+        android:text="Показать все"
+        android:textColor="#FFFF"
+        android:textSize="16sp"
+        android:textStyle="italic"
+        android:background="@drawable/shape_4"
+        app:circularflow_radiusInDP="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/relativeLayout1"
+        app:layout_constraintVertical_bias="0.194" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
