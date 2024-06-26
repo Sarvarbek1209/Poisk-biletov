@@ -1,6 +1,6 @@
-package com.example.poiskbiletov
+package Data
 
-data class offer(
+data class Offer(
 val id: Int,
 val title: String,
 val city: String,

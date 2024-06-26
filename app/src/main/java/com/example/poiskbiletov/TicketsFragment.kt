@@ -1,10 +1,14 @@
 package com.example.poiskbiletov
 
 
+import Adapters.OffersAdapter
+import Data.Offer
 import android.app.Dialog
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.InputFilter
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -20,6 +24,13 @@ import androidx.core.widget.addTextChangedListener
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.poiskbiletov.databinding.FragmentTicketsBinding
+import okhttp3.Call
+import okhttp3.Callback
+import okhttp3.OkHttpClient
+import okhttp3.Request
+import okhttp3.Response
+import okhttp3.internal.http2.Http2Reader
+import okio.IOException
 import org.json.JSONObject
 
 
@@ -30,6 +41,9 @@ class TicketsFragment : Fragment() {
     private lateinit var binding: FragmentTicketsBinding
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: OffersAdapter
+
+    private val client = OkHttpClient()
+    private val mainHandler = Handler(Looper.getMainLooper())
 
     private val PREFS_NAME = "MyPrefs"
     private val KEY_DEPARTURE = "departure"
@@ -50,13 +64,9 @@ class TicketsFragment : Fragment() {
         adapter = OffersAdapter(emptyList()) // Пока данные не загружены, используем пустой список
         recyclerView.adapter = adapter
 
-        val apiClient = ApiClient(requireContext())
-        val response = apiClient.getOffersFromLocal()
+        fetchOffers()
 
-        response?.let {
-            val offers = parseJson(it)
-            adapter.updateOffers(offers)
-        }
+
         binding.Text1.setOnClickListener {
             showCustomDialog()
 
@@ -90,6 +100,31 @@ class TicketsFragment : Fragment() {
 
 
     }
+    private fun fetchOffers() {
+        val request = Request.Builder()
+            .url("https://run.mocky.io/v3/ad9a46ba-276c-4a81-88a6-c068e51cce3a")
+            .build()
+
+        client.newCall(request).enqueue(object : Callback {
+            override fun onFailure(call: Call, e: IOException) {
+                e.printStackTrace()
+            }
+
+            override fun onResponse(call: Call, response: Response) {
+                response.body?.let { responseBody ->
+                    val jsonString = responseBody.string()
+                    val offers = parseJson(jsonString)
+
+                    mainHandler.post {
+                        // Обновите адаптер вашего списка
+                        updateUI(offers)
+                    }
+                }
+            }
+        })
+    }
+
+
     private fun showInputDialog(){
         val textView = EditText(requireContext())
         textView.filters = arrayOf(CyrillicInputFilter())
@@ -102,26 +137,33 @@ class TicketsFragment : Fragment() {
         }
     }
 
-
-
-    private fun parseJson(response: String): List<offer> {
-        val offers = mutableListOf<offer>()
+    private fun parseJson(response: String): List<Offer> {
+        val offers = mutableListOf<Offer>()
         val jsonObject = JSONObject(response)
         val jsonArray = jsonObject.getJSONArray("offers")
 
         for (i in 0 until jsonArray.length()) {
             val offerObject = jsonArray.getJSONObject(i)
-            val offer = offer(
+            val offer = Offer(
                 offerObject.getInt("id"),
                 offerObject.getString("title"),
                 offerObject.getString("town"),
                 offerObject.getJSONObject("price").getDouble("value")
             )
-            offers.add(offer)
+             offers.add(offer)
         }
 
         return offers
     }
+
+    private fun updateUI(offers: List<Offer>) {
+        // Здесь обновите ваш список
+        // Например, если вы используете RecyclerView
+        val recyclerView = view?.findViewById<RecyclerView>(R.id.recycler_view_offers)
+        val adapter = OffersAdapter(offers)
+        recyclerView?.adapter = adapter
+    }
+
 
      private fun showCustomDialog(){
          val dialog = Dialog(requireContext())
@@ -200,7 +242,8 @@ class TicketsFragment : Fragment() {
          dialog.show()
 
      }
-
 }
+
+
 
 

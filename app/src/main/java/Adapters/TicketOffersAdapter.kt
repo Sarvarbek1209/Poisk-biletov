@@ -1,4 +1,4 @@
-package com.example.poiskbiletov
+package Adapters
 
 import android.view.LayoutInflater
 import android.view.View
@@ -6,15 +6,14 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.poiskbiletov.R
+
+import TicketOffer
 
 class TicketOffersAdapter(private var ticketOffersList: List<TicketOffer>) : RecyclerView.Adapter<TicketOffersAdapter.TicketOfferViewHolder>() {
 
-    fun updateTicketOffers(newTicketOffers: List<TicketOffer>) {
-        newTicketOffers?.let {
-            ticketOffersList = it
-            notifyDataSetChanged()
-        }
-    }
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TicketOfferViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.ragment_offers1, parent, false)
@@ -36,8 +35,8 @@ class TicketOffersAdapter(private var ticketOffersList: List<TicketOffer>) : Rec
 
         fun bind(ticketOffer: TicketOffer) {
             title.text = ticketOffer.title
-            timeRange.text = ticketOffer.time_range.joinToString(", ")  // Преобразование списка времени в строку
-            price.text = "от ${String.format("%,d", ticketOffer.price.value.toInt())}₽" // Разделение между разрядами
+            timeRange.text = ticketOffer.timeRange.joinToString(", ")  // Преобразование списка времени в строку
+            price.text = "от ${String.format("%,d", ticketOffer.price.toInt())}₽" // Разделение между разрядами
             // Установите изображение по id объекта
             image.setImageResource(getImageResource(ticketOffer.id))
         }

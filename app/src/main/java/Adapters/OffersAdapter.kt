@@ -1,18 +1,18 @@
-package com.example.poiskbiletov
+package Adapters
 
+import Data.Offer
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.poiskbiletov.R
 
-class OffersAdapter(private var offersList: List<offer>) : RecyclerView.Adapter<OffersAdapter.OfferViewHolder>() {
 
-    fun updateOffers(newOffers: List<offer>) {
-        offersList = newOffers
-        notifyDataSetChanged()
-    }
+class OffersAdapter(private var offersList: List<Offer>) : RecyclerView.Adapter<OffersAdapter.OfferViewHolder>() {
+
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): OfferViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.ragment_offers, parent, false)
@@ -32,7 +32,7 @@ class OffersAdapter(private var offersList: List<offer>) : RecyclerView.Adapter<
         private val price: TextView = itemView.findViewById(R.id.price)
         private val image: ImageView = itemView.findViewById(R.id.image)
 
-        fun bind(offer: offer) {
+        fun bind(offer: Offer) {
             title.text = offer.title
             town.text = offer.city
             price.text = "от ${String.format("%,d", offer.price.toInt())}₽" // Разделение между разрядами
